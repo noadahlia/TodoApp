@@ -10,13 +10,16 @@
                v-model="newTask"
                placeholder="Nouvelle Tache"
         />
-        <button>
+        <button @click="addTask">
           <i class="fa-solid fa-plus"></i>
         </button>
       </div>
       <div class="taskItems">
         <ul>
-          <TodoItem>
+          <TodoItem
+              v-for="(task) in todoList"
+              :key="task.id"
+          >
           </TodoItem>
         </ul>
       </div>
@@ -47,7 +50,13 @@ export default {
       newTask:"",
       todoList:[]
     };
+  },
+  methods:{
+    addTask(){
+      this.todoList.push(this.newTask)
+    }
   }
+
 }
 </script>
 
